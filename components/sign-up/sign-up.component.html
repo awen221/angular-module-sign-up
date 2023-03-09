@@ -1,1 +1,78 @@
-<p>sign-up works!</p>
+<mat-card class="card">
+  <mat-card-title>
+    <H1>帳號註冊</H1>
+  </mat-card-title>
+
+  <mat-card-subtitle>請輸入註冊資訊</mat-card-subtitle>
+
+  <mat-form-field class="input">
+    <mat-label>請輸入帳號</mat-label>
+    <input matInput type="text" #account
+    placeholder="Acount" [formControl]="accountFormControl">
+
+    <mat-error *ngIf="accountFormControl.hasError('required')">
+      Please enter a valid Account
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>請輸入姓名</mat-label>
+    <input matInput type="text" #username
+    placeholder="UserName" [formControl]="usernameFormControl">
+
+    <mat-error *ngIf="usernameFormControl.hasError('required')">
+      Please enter a valid UserName
+    </mat-error>
+
+  </mat-form-field>
+
+
+
+
+    <mat-form-field class="input">
+      <mat-label>請輸入信箱</mat-label>
+      <input matInput type="email" #usermail
+      placeholder="Ex. example@example.com" [formControl]="emailFormControl">
+
+      <mat-error *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+
+    </mat-form-field>
+
+
+  <mat-form-field class="input">
+    <mat-label>請輸入密碼</mat-label>
+    <input matInput type="text" #password [type]="password_hide ? 'password' : 'text'"
+    placeholder="Password" [formControl]="passwordFormControl">
+
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      Please enter a valid Password
+    </mat-error>
+
+    <button mat-icon-button (click)="password_hide = !password_hide" matSuffix >
+      <mat-icon>{{password_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>請確認密碼</mat-label>
+    <input matInput type="text" #password_confirm [type]="password_confirm_hide ? 'password' : 'text'"
+    placeholder="Password Confirm" [formControl]="password_confirmFormControl">
+
+    <mat-error *ngIf="password_confirmFormControl.hasError('required')">
+      Please enter a valid Password
+    </mat-error>
+
+    <button mat-icon-button (click)="password_confirm_hide = !password_confirm_hide" matSuffix >
+      <mat-icon>{{password_confirm_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+  </mat-form-field>
+
+  <button mat-flat-button class="button" color="primary">送出</button>
+
+
+</mat-card>
